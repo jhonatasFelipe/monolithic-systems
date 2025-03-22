@@ -28,7 +28,7 @@ export default class InvoiceRepository implements InvoiceGateway{
             items: invoice.items.map((item) => new InvoiceItems({
                 id: new Id(item.id),
                 name: item.name,
-                price: item.price,
+                salesPrice: item.salesPrice,
             }))
         });
     }
@@ -44,7 +44,7 @@ export default class InvoiceRepository implements InvoiceGateway{
                 await ItemsModel.create({
                     id: item.id.id,
                     name: item.name,
-                    price: item.price,
+                    salesPrice: item.salesPrice,
                     invoiceId: newInvoice.id,
                 })
         });
@@ -78,7 +78,7 @@ export default class InvoiceRepository implements InvoiceGateway{
             items: newInvoice.items.map((item) => new InvoiceItems({
             id: new Id(item.id),
             name: item.name,
-            price: item.price,
+            salesPrice: item.salesPrice,
             })),
             createdAt: newInvoice.createdAt,
             updatedAt: newInvoice.updatedAt,

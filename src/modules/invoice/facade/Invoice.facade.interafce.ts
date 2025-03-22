@@ -18,7 +18,7 @@ export interface FindInvoiceFacadeOutputDTO {
     items: {
         id: string;
         name: string;
-        price: number;
+        salesPrice: number;
     }[];
     total: number;
     createdAt: Date;
@@ -37,7 +37,7 @@ export interface GenerateInvoiceFacadeInputDto {
     items: {
       id: string;
       name: string;
-      price: number;
+      salesPrice: number;
     }[];
   }
   
@@ -54,7 +54,7 @@ export interface GenerateInvoiceFacadeInputDto {
     items: {
       id: string;
       name: string;
-      price: number;
+      salesPrice: number;
     }[];
     total: number;
   }

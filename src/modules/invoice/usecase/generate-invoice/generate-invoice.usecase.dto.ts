@@ -11,7 +11,7 @@
     items: {
       id: string;
       name: string;
-      price: number;
+      salesPrice: number;
     }[];
   }
   
@@ -28,7 +28,7 @@
     items: {
       id: string;
       name: string;
-      price: number;
+      salesPrice: number;
     }[];
     total: number;
   }

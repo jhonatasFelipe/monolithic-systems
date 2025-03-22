@@ -7,13 +7,13 @@ import FindInvoiceUseCase from "./find-invoice.usecase";
 const item1 = new InvoiceItems({
     id: new Id("1"),
     name: "Notebook",
-    price: 1000,
+    salesPrice: 1000,
 });
 
 const item2 = new InvoiceItems({
     id: new Id("2"),
     name: "Iphone",
-    price: 5000,
+    salesPrice: 5000,
 })
 
 const address = new Address({
@@ -67,10 +67,10 @@ describe("Find invoice use case united test",()=>{
         expect(result.items.length).toBe(2);
         expect(result.items[0].id).toBe(item1.id.id);
         expect(result.items[0].name).toBe(item1.name);
-        expect(result.items[0].price).toBe(item1.price);
+        expect(result.items[0].salesPrice).toBe(item1.salesPrice);
         expect(result.items[1].id).toBe(item2.id.id);
         expect(result.items[1].name).toBe(item2.name);
-        expect(result.items[1].price).toBe(item2.price);
+        expect(result.items[1].salesPrice).toBe(item2.salesPrice);
         expect(result.createdAt).toBeInstanceOf(Date); 
     })
 })

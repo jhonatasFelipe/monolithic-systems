@@ -45,12 +45,12 @@ describe('InvoiceFacade test',  () => {
                 {
                     id: '1',
                     name: 'Item 1',
-                    price: 100,
+                    salesPrice: 100,
                 },
                 {
                     id: '2',
                     name: 'Item 2',
-                    price: 200,
+                    salesPrice: 200,
                 },
             ]
         }
@@ -71,7 +71,7 @@ describe('InvoiceFacade test',  () => {
                 id: item.id,
                 invoiceId: input.id,
                 name: item.name,
-                price: item.price,
+                salesPrice: item.salesPrice,
             })
         })
 
@@ -93,10 +93,10 @@ describe('InvoiceFacade test',  () => {
         expect(result.items.length).toBe(2);
         expect(result.items[0].id).toBe('1');
         expect(result.items[0].name).toBe('Item 1');
-        expect(result.items[0].price).toBe(100);
+        expect(result.items[0].salesPrice).toBe(100);
         expect(result.items[1].id).toBe('2');
         expect(result.items[1].name).toBe('Item 2');
-        expect(result.items[1].price).toBe(200);
+        expect(result.items[1].salesPrice).toBe(200);
 
     })
 
@@ -117,12 +117,12 @@ describe('InvoiceFacade test',  () => {
                 {
                     id: '1',
                     name: 'Item 1',
-                    price: 100,
+                    salesPrice: 100,
                 },
                 {
                     id: '2',
                     name: 'Item 2',
-                    price: 200,
+                    salesPrice: 200,
                 },
             ]
         }
@@ -142,10 +142,10 @@ describe('InvoiceFacade test',  () => {
         expect(result.items.length).toBe(2);
         expect(result.items[0].id).toBe('1');
         expect(result.items[0].name).toBe('Item 1');
-        expect(result.items[0].price).toBe(100);
+        expect(result.items[0].salesPrice).toBe(100);
         expect(result.items[1].id).toBe('2');
         expect(result.items[1].name).toBe('Item 2');
-        expect(result.items[1].price).toBe(200);
+        expect(result.items[1].salesPrice).toBe(200);
 
     });
 })

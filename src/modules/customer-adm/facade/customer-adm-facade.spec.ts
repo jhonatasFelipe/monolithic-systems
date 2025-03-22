@@ -1,12 +1,9 @@
-import { CreatedAt, Sequelize } from "sequelize-typescript";
+import { Sequelize } from "sequelize-typescript";
 import CustomerModel from "../repository/customer.model";
-import CustomerRepository from "../repository/Customer.repository";
-import AddCustomerUseCase from "../usecase/addCustomer/add-customer.usecase";
-import CustomerAdmFacade from "./customer-adm.facede";
-import FindCustomerUseCase from "../usecase/findCustomer/find-customer.usecase";
 import CustomerAdmFacadeFactory from "../factory/Customer-adm.facade.factory";
+import AddressModel from "../repository/address/address.model";
 
-describe('ProductRepository test',  () => { 
+describe('Customer Facade test',  () => { 
 
     let sequelize: Sequelize;
 
@@ -18,7 +15,7 @@ describe('ProductRepository test',  () => {
             sync: { force: true },
         });
 
-        await sequelize.addModels([CustomerModel]);
+        await sequelize.addModels([CustomerModel, AddressModel]);
         await sequelize.sync();
     });
 
@@ -32,7 +29,15 @@ describe('ProductRepository test',  () => {
             id: '1',
             name: 'John Doe',
             email: 'john.doe@example.com',
-            address: 'address 1'
+            document: '00000',
+            address : {
+                street: "street 1",
+                number: "number 1",
+                city: "city 1",
+                state: "state 1",
+                zipCode: "999999-99",
+                complement: "complemento 1"
+            }
         }
 
         await facade.add(input);
@@ -46,19 +51,31 @@ describe('ProductRepository test',  () => {
 
     });
 
-    it('should create a customer', async () => {
+    it('should find a customer', async () => {
         const facade = CustomerAdmFacadeFactory.create();
 
         const input = {
             id: '1',
             name: 'John Doe',
             email: 'john.doe@example.com',
-            address: 'address 1',
+            document: '00000',
             createdAt: new Date(),
             updatedAt: new Date()
         }
 
         await CustomerModel.create(input);
+
+        const addressInput = {
+            street: "street 1",
+            number: "number 1",
+            city: "city 1",
+            state: "state 1",
+            zipCode: "999999-99",
+            customerId: '1',
+            complement: "complemento 1"
+        }
+
+        await  AddressModel.create(addressInput);
 
         const inputFacade = {
             id: '1',
@@ -69,7 +86,13 @@ describe('ProductRepository test',  () => {
         expect(customer.id).toBe(input.id);
         expect(customer.name).toBe(input.name);
         expect(customer.email).toBe(input.email);
-        expect(customer.address).toBe(input.address);
+        expect(customer.document).toBe(input.document);
+        expect(customer.address.street).toBe(addressInput.street);
+        expect(customer.address.number).toBe(addressInput.number);
+        expect(customer.address.city).toBe(addressInput.city);
+        expect(customer.address.state).toBe(addressInput.state);
+        expect(customer.address.zipCode).toBe(addressInput.zipCode);
+        expect(customer.address.complement).toBe(addressInput.complement);
 
     });
 });

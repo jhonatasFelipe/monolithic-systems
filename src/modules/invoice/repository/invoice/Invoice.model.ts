@@ -19,8 +19,8 @@ export default class InvoiceModel extends Model {
     @Column({ allowNull: false })
     document: string;
 
-    @HasOne(()=> AddressModel)
-    address: AddressModel;
+    @HasOne(()=> require("../address/address.model").default)
+    address: any;
 
     @HasMany(()=> ItemsModel)
     items: ItemsModel[];

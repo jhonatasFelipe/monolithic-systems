@@ -4,7 +4,7 @@ import { AllowNull, Column, Model, PrimaryKey, Table } from "sequelize-typescrip
     tableName: 'products',
     timestamps: true,
 })
-export default class ProductModel extends Model{
+export class ProductModel extends Model{
     @PrimaryKey
     @Column({allowNull : false})
     id: string;

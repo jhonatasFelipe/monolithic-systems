@@ -1,5 +1,4 @@
-import { Column, Model, PrimaryKey, Table } from "sequelize-typescript";
-
+import { Column, HasOne, Model, PrimaryKey, Table } from "sequelize-typescript";
 
 @Table({
     tableName: 'customers',
@@ -18,9 +17,11 @@ export default class CustomerModel extends Model {
     email: string;
 
     @Column({ allowNull: false })
-    address: string;
+    document: string;
 
-    
+    @HasOne(()=> require("./address/address.model").default)
+    address: any;
+
     @Column({ allowNull: false })
     createdAt: Date;
 

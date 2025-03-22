@@ -12,14 +12,14 @@ export default class ItemsModel extends Model {
     @Column({ allowNull: false })
     id: string;
 
-    @ForeignKey(()=> InvoiceModel)  // Define the foreign key to the InvoiceModel
-    @Column({ allowNull: false })  // Define the foreign key column in the ItemsModel
-    invoiceId: string;   // The foreign key column in the ItemsModel
+    @ForeignKey(()=> InvoiceModel) 
+    @Column({ allowNull: false })  
+    invoiceId: string;   
 
     @Column({ allowNull: false })
     name: string;
 
     @Column({ allowNull: false })
-    price: number;
+    salesPrice: number;
     
 }

@@ -17,7 +17,7 @@ export interface FindInvoiceUseCaseInputDTO {
     items: {
       id: string;
       name: string;
-      price: number;
+      salesPrice: number;
     }[];
     total: number;
     createdAt: Date;

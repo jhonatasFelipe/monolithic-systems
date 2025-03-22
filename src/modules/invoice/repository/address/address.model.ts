@@ -1,5 +1,4 @@
-import { BelongsTo, Column, ForeignKey, Model, PrimaryKey, Table } from "sequelize-typescript";
-import Address from "../../domain/value-object/address.value-object";
+import { Column, ForeignKey, Model, Table } from "sequelize-typescript";
 import InvoiceModel from "../invoice/Invoice.model";
 
 @Table({

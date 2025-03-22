@@ -25,7 +25,7 @@ export default class GenerateInvoiceUseCase implements UseCaseInterface {
         const items = input.items.map((item) => new InvoiceItems({
             id: new Id(item.id),
             name: item.name,
-            price: item.price
+            salesPrice: item.salesPrice
         }));
 
         const newInvoice = new Invoice({
@@ -51,11 +51,11 @@ export default class GenerateInvoiceUseCase implements UseCaseInterface {
                 {
                     id: item.id.id,
                     name: item.name,
-                    price: item.price
+                    salesPrice: item.salesPrice
                 }
             )),
             total: invoice.items.reduce((accumulator, currentValue)=>{
-                return accumulator + currentValue.price
+                return accumulator + currentValue.salesPrice
             },0)
         }
     }
